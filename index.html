@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 19th Birthday, Makena! 🎂✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffc0e3 0%, #ffb3d9 50%, #ffa8cf 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Falling flowers background */
+        .flower {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .flower:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .flower:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s; }
+        .flower:nth-child(3) { left: 30%; animation-duration: 9s; animation-delay: 4s; }
+        .flower:nth-child(4) { left: 40%; animation-duration: 11s; animation-delay: 1s; }
+        .flower:nth-child(5) { left: 50%; animation-duration: 8.5s; animation-delay: 3s; }
+        .flower:nth-child(6) { left: 60%; animation-duration: 10.5s; animation-delay: 5s; }
+        .flower:nth-child(7) { left: 70%; animation-duration: 9.5s; animation-delay: 2.5s; }
+        .flower:nth-child(8) { left: 80%; animation-duration: 11s; animation-delay: 4.5s; }
+        .flower:nth-child(9) { left: 90%; animation-duration: 8s; animation-delay: 1.5s; }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            animation: confetti-fall 3s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotateZ(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Cake and candles */
+        .cake-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            animation: wiggle 2s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-2deg); }
+            75% { transform: rotate(2deg); }
+        }
+
+        .cake {
+            position: relative;
+            width: 200px;
+            height: 150px;
+        }
+
+        .cake-base {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(135deg, #d4637f 0%, #c94e6d 100%);
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .frosting {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 40px;
+            background: linear-gradient(180deg, #ff69b4 0%, #ff1493 100%);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .candle {
+            position: absolute;
+            width: 4px;
+            height: 30px;
+            background: #fff9e6;
+            border-radius: 2px;
+            animation: flicker 0.3s ease-in-out infinite;
+        }
+
+        .candle:nth-child(1) { left: 30%; top: -30px; }
+        .candle:nth-child(2) { left: 50%; top: -35px; }
+        .candle:nth-child(3) { right: 30%; top: -30px; }
+
+        .flame {
+            position: absolute;
+            width: 8px;
+            height: 15px;
+            background: linear-gradient(to top, #ff6b35, #ffd700);
+            border-radius: 50% 50% 50% 30%;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flame-flicker 0.4s ease-in-out infinite;
+        }
+
+        @keyframes flame-flicker {
+            0%, 100% { transform: translateX(-50%) scaleY(1); }
+            50% { transform: translateX(-50%) scaleY(0.9); }
+        }
+
+        /* Envelope */
+        .envelope-container {
+            margin-top: 3rem;
+        }
+
+        .envelope {
+            width: 250px;
+            height: 180px;
+            background: linear-gradient(135deg, #ffb3d9 0%, #ffc0e3 100%);
+            border-radius: 10px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: envelope-bounce 2s ease-in-out infinite;
+        }
+
+        .envelope:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes envelope-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: transform 0.5s ease;
+            transform-origin: top;
+            cursor: pointer;
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(-180deg);
+        }
+
+        .envelope-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: #ff1493;
+            font-weight: bold;
+        }
+
+        .letter-content {
+            position: absolute;
+            top: 55%;
+            left: 15%;
+            width: 70%;
+            height: 35%;
+            background: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.3s;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .envelope.open .letter-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .open-text {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: white;
+            animation: pulse 1.5s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .hearts {
+            font-size: 2rem;
+            margin: 1rem 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .closing {
+            color: #ff1493;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Falling flowers -->
+    <div class="flower">🌸</div>
+    <div class="flower">🌺</div>
+    <div class="flower">🌼</div>
+    <div class="flower">🌸</div>
+    <div class="flower">🌺</div>
+    <div class="flower">🌼</div>
+    <div class="flower">🌸</div>
+    <div class="flower">🌺</div>
+    <div class="flower">🌼</div>
+
+    <div class="container">
+        <h1>🎉 Happy 19th Birthday, Makena! 🎉</h1>
+        <p class="subtitle">Let's celebrate YOU today! 💖</p>
+
+        <!-- Cake with candles -->
+        <div class="cake-container">
+            <div class="cake">
+                <div class="frosting"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+                <div class="cake-base">
+                    🎂
+                </div>
+            </div>
+        </div>
+
+        <!-- Envelope -->
+        <div class="envelope-container">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap">✉️</div>
+                <div class="envelope-text">Open Me!</div>
+                <div class="letter-content">
+                    <p><strong>Dearest Makena,</strong></p>
+                    <p style="margin-top: 0.5rem;">
+                        Today isn't just any day—it's the day the world became infinitely brighter! 
+                        Nineteen years ago, you came into existence, and honestly, we've all been lucky ever since. 💫
+                    </p>
+                    <p style="margin-top: 0.5rem;">
+                        You're the kind of person who makes ordinary moments magical. Your smile lights up rooms, your laugh is contagious, 
+                        and your heart? It's absolutely golden. At 19, you're not just getting older—you're getting better, braver, and more beautifully YOU. 🌟
+                    </p>
+                    <p style="margin-top: 0.5rem;">
+                        This year is going to be AMAZING. Chase those dreams, take those leaps, and remember that you're capable of absolutely incredible things. 
+                        And on the days when things get tough? Remember this: you're stronger than you think, kinder than you believe, and more loved than you could ever imagine. 💕
+                    </p>
+                    <p style="margin-top: 0.5rem;">
+                        Thank you for being YOU. The world needs your light, your laugh, and your endless kindness. 
+                    </p>
+                    <p class="closing">
+                        Here's to 19 and making it legendary! 🎂✨
+                        <br><br>
+                        With all my love,<br>
+                        Someone Who Believes In You 💗
+                    </p>
+                </div>
+                <div class="open-text">👆 Click to open!</div>
+            </div>
+        </div>
+
+        <div class="hearts">💕 ✨ 🎀 ✨ 💕</div>
+    </div>
+
+    <script>
+        const envelope = document.getElementById('envelope');
+        let isOpen = false;
+
+        envelope.addEventListener('click', function() {
+            isOpen = !isOpen;
+            if (isOpen) {
+                envelope.classList.add('open');
+                // Trigger confetti when envelope opens
+                createConfetti();
+            } else {
+                envelope.classList.remove('open');
+            }
+        });
+
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ffd700', '#ff1493', '#ffb3d9', '#ffc0e3'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // Create floating flowers on load
+        window.addEventListener('load', function() {
+            // Optional: Add any additional initialization here
+            console.log('🎂 Makena\'s Birthday Website Loaded! 🎂');
+        });
+    </script>
+</body>
+</html>
